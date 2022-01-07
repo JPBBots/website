@@ -1,6 +1,6 @@
 import { VStack, Text, Divider } from '@chakra-ui/react'
 import { bots } from '../bots'
-import BotItem from './components/BotItem/BotItem'
+import { BotItem } from '@/BotItem'
 
 export default function Home() {
   return (
