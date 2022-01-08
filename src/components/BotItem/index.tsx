@@ -12,7 +12,7 @@ import { Bot } from '../../bots'
 import { useMinWidth } from '../../hooks/useMinWidth'
 
 export function BotItem({ bot }: { bot: Bot }) {
-  const [mobile] = useMinWidth(690)
+  const [mobile] = useMinWidth(850)
 
   const buttons = (
     <>
