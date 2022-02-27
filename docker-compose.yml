@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  site:
+    container_name: JPBBotsSite
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NPM_TOKEN=${GH_TOKEN}
+
+    ports:
+      - 5693:80
+
+    entrypoint: ["npm", "start"]
+    restart: "unless-stopped"

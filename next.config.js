@@ -6,6 +6,14 @@ module.exports = {
       {
         source: '/join',
         destination: '/api/join'
+      },
+      {
+        source: '/support',
+        destination: '/api/join'
+      },
+      {
+        source: '/:bot/invite',
+        destination: '/api/invite?slug=:bot'
       }
     ]
   }

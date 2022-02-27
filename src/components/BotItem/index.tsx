@@ -8,8 +8,10 @@ import {
   Wrap,
   Flex
 } from '@chakra-ui/react'
-import { Bot } from 'hooks/useBots'
+import { Bot, convertInvite } from 'hooks/useBots'
 import { useMinWidth } from '../../hooks/useMinWidth'
+
+import NextLink from 'next/link'
 
 export function BotItem({ bot }: { bot: Bot }) {
   const [mobile] = useMinWidth(850)
@@ -19,7 +21,7 @@ export function BotItem({ bot }: { bot: Bot }) {
       {
         <Button
           onClick={() => {
-            window.open(`https://top.gg/bot/${bot.id}/invite`)
+            window.open(convertInvite(bot))
           }}
         >
           Invite
@@ -52,14 +54,20 @@ export function BotItem({ bot }: { bot: Bot }) {
         p={2}
         alignItems={mobile ? 'center' : 'flex-start'}
       >
-        <HStack w="full" justifyContent={mobile ? 'center' : 'space-between'}>
-          <Text textStyle="heading.sm">
-            {bot.name} (
-            {(100 * Math.round(bot.serverCount! / 100)).toLocaleString()}{' '}
-            servers)
-          </Text>
-          {!mobile && <HStack justifySelf="flex-end">{buttons}</HStack>}
-        </HStack>
+        <NextLink href={`/${bot.slug}`}>
+          <HStack
+            cursor="pointer"
+            w="full"
+            justifyContent={mobile ? 'center' : 'space-between'}
+          >
+            <Text textStyle="heading.sm">
+              {bot.name} (
+              {(100 * Math.round(bot.serverCount / 100)).toLocaleString()}{' '}
+              servers)
+            </Text>
+            {!mobile && <HStack justifySelf="flex-end">{buttons}</HStack>}
+          </HStack>
+        </NextLink>
         <Divider />
         <VStack w="full" alignItems={mobile ? 'center' : 'flex-start'}>
           <Wrap flexShrink={1} maxW="80vw">

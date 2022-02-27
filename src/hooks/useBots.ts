@@ -5,9 +5,18 @@ export interface Bot {
   slug: string
   id: string
   description: string
-  serverCount?: number
+  serverCount: number
   avatar?: string
   site?: string
+  invite: `/${string}` | number
+}
+
+export const convertInvite = (bot: Bot) => {
+  if (typeof bot.invite === 'string' && bot.site) {
+    return `${bot.site}${bot.invite}`
+  } else {
+    return `https://discord.com/oauth2/authorize?client_id=${bot.id}&scope=bot+applications.commands&permissions=${bot.invite}`
+  }
 }
 
 export const useBots = () => {

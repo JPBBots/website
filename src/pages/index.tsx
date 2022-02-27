@@ -24,7 +24,7 @@ export default function Home() {
           <Text textStyle="heading.sm">Creating the bots you love</Text>
           <Text textStyle="label.sm">
             Serving{' '}
-            {bots?.reduce((a, b) => a + b.serverCount!, 0).toLocaleString()}{' '}
+            {bots?.reduce((a, b) => a + b.serverCount, 0).toLocaleString()}{' '}
             communities
           </Text>
           <HStack>

@@ -1,4 +1,5 @@
-import { Text, VStack, Divider, Spinner, Wrap } from '@chakra-ui/react'
+import { Loading } from '@/Loading'
+import { Text, VStack, Divider, Wrap } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { AdminUser, StaffInfo } from './StaffInfo'
 
@@ -46,7 +47,7 @@ export function StaffList() {
             </VStack>
           ))
         ) : (
-          <Spinner w="100px" h="100px" />
+          <Loading />
         )}
       </VStack>
     </VStack>
