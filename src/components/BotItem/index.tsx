@@ -8,7 +8,7 @@ import {
   Wrap,
   Flex
 } from '@chakra-ui/react'
-import { Bot } from '../../bots'
+import { Bot } from 'hooks/useBots'
 import { useMinWidth } from '../../hooks/useMinWidth'
 
 export function BotItem({ bot }: { bot: Bot }) {
@@ -53,7 +53,11 @@ export function BotItem({ bot }: { bot: Bot }) {
         alignItems={mobile ? 'center' : 'flex-start'}
       >
         <HStack w="full" justifyContent={mobile ? 'center' : 'space-between'}>
-          <Text textStyle="heading.sm">{bot.name}</Text>
+          <Text textStyle="heading.sm">
+            {bot.name} (
+            {(100 * Math.round(bot.serverCount! / 100)).toLocaleString()}{' '}
+            servers)
+          </Text>
           {!mobile && <HStack justifySelf="flex-end">{buttons}</HStack>}
         </HStack>
         <Divider />
